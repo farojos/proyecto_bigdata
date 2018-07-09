@@ -1,0 +1,22 @@
+# myConfigFileName.conf
+
+
+hw3Flume.sources = r1
+hw3Flume.sinks = k1
+hw3Flume.channels = c1
+
+
+hw3Flume.sources.r1.type = spooldir
+hw3Flume.sources.r1.spoolDir = /flume/weblogsSpooldir
+hw3Flume.sources.r1.fileHeader = true
+hw3Flume.sources.r1.channels = c1
+
+hw3Flume.sinks.k1.type = avro
+hw3Flume.sinks.k1.channel = c1
+hw3Flume.sinks.k1.hostname = localhost
+hw3Flume.sinks.k1.port = 54321
+
+
+hw3Flume.channels.c1.type = memory
+hw3Flume.channels.c1.capacity = 1000000
+hw3Flume.channels.c1.transactionCapacity = 1000000
