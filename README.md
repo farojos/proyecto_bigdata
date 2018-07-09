@@ -31,7 +31,10 @@ Sin embargo, el script de spark tuvo que cambiar en gran medida. Primero filtram
 Con el trabajo realizado previamente, se obtiene la siguiente matriz de confusión: 
 ``` [[319, 900], [124, 2461]] ```
 
+Se concluye que haber tenido que disminuir de 5 categorías de sentimiento a 2, redujo sustancialmente la performance del trabajo. Se observa con la matriz de confusión que hay un sesgo hacia el cluster '1'. Esto es lógico ya que la clasificación '1', contiene 3 de las 5 categorías iniciales.
+
 Se reutilizó el tsne de la tarea 3 para mostrar los resultados. En el gráfico los puntos morados representan las clasificaciones predecidas correctamente y en amarillo los errores.
 
 ![TSNE](./tsne/tsne.png)
 
+Se disminuyó de dimensionalidad 50 a 2 para poder representar el resultado en 2D. Se observa un resultado bastante coherente, con 2 clusters a cada costado y luego un gran cluster al centro, donde deben cruzarse los otros 3 clusters. De todas formas, se ven puntos amarillos en prácticamente todo el gráfico, lo que se puede explicar con la pérdida de información uniforme en todos los grupos que se tuvo que la disminución de categorías.
