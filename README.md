@@ -6,7 +6,7 @@ Se utilizó el dataset de sentimientos de twitter apple, disponible en el enunci
 
 ## Requerimientos
 
-Para realizar los siguientes experimentos, para prepocesamiento se utilizo excel y python 3.6. Para el training se requirio instalar python 2.7 y utilizar pip para instalar la libreria Gensim. Por ultimo, usamos 
+Para realizar los siguientes experimentos, para prepocesamiento se utilizo excel y python 3.6. Para el training se requirio instalar python 2.7 y utilizar pip para instalar la libreria Gensim, para ello seguimos el siguiente tutorial: http://blog.leifmadsen.com/blog/2017/01/03/installing-python-2.7-on-centos-6.x/. Por último, usamos 
 GloVe de 6B en su version de 50 dimensiones, el cual es transformado al formato de gensim con el script convert.py disponible en (INSERTAR LINK)
 
 ## Preprocesamiento. 
@@ -24,4 +24,4 @@ en adición a las correcciones anteriores, la libreria mllib de pyspark no sopor
 ## Training
 
 Al igual que la tarea 3, no se cambio el archivo de flume respecto a la pregunta 3 de esta tarea, el cual esta disponible en (INSERTAR LINK).
-Sin embargo, el script de spark tuvo que cambiar en gran medida. Primero filtramos que el streaming no sea vacio (para no procesar data vacia). Tambien agregamos
+Sin embargo, el script de spark tuvo que cambiar en gran medida. Primero filtramos que el streaming no sea vacio (para no procesar data vacia). Tambien agregamos GloVe con 50 dimensiones para codificar las palabras. Si una palabra no se encuentra esta se ignora. Posteriormente promediamos los embeddings de las palabras en el diccionario. Esto despues lo pasamos por un clasificador LinearSVM, disponible en la libreria mllib(from pyspark.mllib.classification import SVMWithSGD). Por último, hacemos las predicciones, imprimimos la matriz de confusion y guardamos los vectores con su prediccion y valor real, los cuales son procesados en un script externo. 
