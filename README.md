@@ -25,3 +25,13 @@ en adición a las correcciones anteriores, la libreria mllib de pyspark no sopor
 
 Al igual que la tarea 3, no se cambio el archivo de flume respecto a la pregunta 3 de esta tarea, el cual esta disponible en (INSERTAR LINK).
 Sin embargo, el script de spark tuvo que cambiar en gran medida. Primero filtramos que el streaming no sea vacio (para no procesar data vacia). Tambien agregamos GloVe con 50 dimensiones para codificar las palabras. Si una palabra no se encuentra esta se ignora. Posteriormente promediamos los embeddings de las palabras en el diccionario. Esto despues lo pasamos por un clasificador LinearSVM, disponible en la libreria mllib(from pyspark.mllib.classification import SVMWithSGD). Por último, hacemos las predicciones, imprimimos la matriz de confusion y guardamos los vectores con su prediccion y valor real, los cuales son procesados en un script externo. 
+
+## Resultados
+
+Con el trabajo realizado previamente, se obtiene la siguiente matriz de confusión: 
+``` [[319, 900], [124, 2461]] ```
+
+Se reutilizó el tsne de la tarea 3 para mostrar los resultados. En el gráfico los puntos morados representan las clasificaciones predecidas correctamente y en amarillo los errores.
+
+![TSNE](./tsne/tsne.png)
+
